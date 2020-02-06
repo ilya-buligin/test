@@ -6,7 +6,9 @@
       valueProp="id"
       :variants="sortVariants"
     />
-    <div v-if="isLoading" class="spinner"></div>
+
+    <Spinner v-if="isLoading" class="spinner" />
+
     <Card v-else v-for="item in sortedItems" :key="item.id" with-hover-effect>
       <div class="order-card-header" slot="header">
         <span class="order-card-price"
@@ -17,9 +19,8 @@
 
       <Flight
         v-for="(flight, index) in item.flights"
-        :key="index"
         v-bind="{ flight }"
-        class="order-card-row"
+        :key="index"
       />
     </Card>
   </div>
@@ -29,6 +30,7 @@
 import { mapActions } from 'vuex';
 
 import RadioBtnGroup from '../components/RadioBtnGroup';
+import Spinner from '../components/Spinner';
 import Card from '../components/Card';
 import Logo from '../components/AirlineLogo';
 import Flight from '../components/Flight';
@@ -64,6 +66,7 @@ export default {
     Card,
     Logo,
     Flight,
+    Spinner,
   },
   data() {
     return {
@@ -96,8 +99,15 @@ export default {
 .home {
   box-sizing: border-box;
   width: 100%;
-  max-width: 500px;
+  max-width: 540px;
   padding: 20px 20px 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .spinner {
+    margin-top: 60px;
+  }
 
   .order-card-header {
     display: flex;

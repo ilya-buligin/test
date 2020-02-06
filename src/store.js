@@ -11,7 +11,7 @@ export default new Vuex.Store({
   actions: {
     getItems() {
       return new Promise(resolve => {
-        setTimeout(() => resolve(mock), 1000);
+        setTimeout(() => resolve(mock), 2000);
       });
     },
   },
