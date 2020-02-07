@@ -84,7 +84,6 @@ export default {
   created() {
     this.getItems()
       .then(data => (this.items = data))
-      .catch(console.error)
       .finally(() => (this.isLoading = false));
   },
   methods: {
